@@ -1,0 +1,19 @@
+{
+
+  "manifest_version": 2,
+  "name": "NYT Ladder",
+  "version": "0.1",
+
+  "description": "NYT Ladder beta",
+
+  "icons": {
+    "48": "icons/nyt-48.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.nytimes.com/*"],
+      "js": ["nyt_script.js"]
+    }
+  ]
+
+}
