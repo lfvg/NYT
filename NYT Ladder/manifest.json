@@ -5,14 +5,26 @@
   "version": "0.1",
 
   "description": "NYT Ladder beta",
+  
+  "permissions": [
+    "activeTab", 
+	"tabs"
+  ],
+  
+  "browser_action": {
+    "default_icon": "icons/nyt-32.png",	
+    "default_title": "NYT Ladder",
+    "default_popup": "popup/nyt.html"
+  },
 
   "icons": {
-    "48": "icons/nyt-48.png"
+    "48": "icons/nyt-48.png",
+	"96": "icons/nyt-96.png"
   },
   "content_scripts": [
     {
       "matches": ["*://*.nytimes.com/*"],
-      "js": ["nyt_script.js"]
+      "js": ["content_scripts/nyt_script.js"]
     }
   ]
 

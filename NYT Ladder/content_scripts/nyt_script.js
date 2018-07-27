@@ -1,0 +1,34 @@
+//ADICIONA UM LISSENER PARA RECEBER MENSAGENS DO POPUP
+browser.runtime.onMessage.addListener((message) => {
+	
+	//DECLARAÇÃO DE VARIAVEIS QUE VAO SALVAR O TITULO(STRING), SUBTITULO(STRING) - SE EXISTIR
+	//E O CORPO DO ARTIGO(STRING[])
+	var titulo = "Não foi possivel ler o artigo";
+	//TODAS AS MATERIAS TEM TITULO, POREM NEM TODAS POSSUEM SUBTITULO, POR ISSO O SUBTITULO E INICIALIZADO COM STRING VAZIA
+	var subtitulo = "";
+	var artigo = [];
+	//SE A MENSAGEM RECEBIDA FOR UM REQUISICAO DE ARTIDO DO NYT IEE (getNYTArticle)
+	//PROCEDE PARA O SEGUINTE , CASO NAO IGNORA 
+	if (message.command === "getNYTArticle"){
+		//PROCURA AS TAGS PELO SUA CLASSNAME - LEMBRANDO QUE TITULO PODE SER VAZIO
+		var paragrafos = document.getElementsByClassName("css-1i0edl6 e2kc3sl0");
+		var tempTitle = document.getElementsByClassName("balancedHeadline");
+		var tempSubTitle = document.getElementsByClassName("css-p2vh5c ewc5vgb0");
+		//DE MODO A EVITAR UM NULL POINT VERIFICASSE PRIMEIRO SE OS ELEMENTOS NAO SAO VAZIOS
+		if (tempTitle.length!=0) titulo = tempTitle[0].innerText;
+		if(tempSubTitle.length != 0) subtitulo = tempSubTitle[0].innerText;
+		//alert("Peguei titulo: " + titulo + " e subtitulo: " + subtitulo)
+		if(paragrafos.length!=0){
+			for (var i = 0; i < paragrafos.length; i++) {
+				artigo.push(paragrafos[i].innerText);
+			}
+		}
+		/*else{
+			artigo.push("Não foi possivel ler o artigo.");
+		}*/
+		//RESPONDE AO POPUP COM O TITULO, SUBTITULO E CORPO DO ARTIGO
+		browser.runtime.sendMessage({command: "setNYTArticle", content: artigo, title: titulo, subtitle: subtitulo});
+	}
+});
+
+
