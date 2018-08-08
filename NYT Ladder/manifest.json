@@ -1,19 +1,27 @@
 {
+	"manifest_version": 2,
+	"name": "NYT Ladder",
+	"version": "0.1.3",
 
-  "manifest_version": 2,
-  "name": "NYT Ladder",
-  "version": "0.1",
+	"description": "NYT Ladder beta",
+  
+	"browser_action": {
+		"default_icon": "icons/nyt-32.png",	
+		"default_title": "NYT Ladder",
+		"default_popup": "popup/nyt.html"
+	},
 
-  "description": "NYT Ladder beta",
-
-  "icons": {
-    "48": "icons/nyt-48.png"
-  },
-  "content_scripts": [
-    {
-      "matches": ["*://*.nytimes.com/*"],
-      "js": ["nyt_script.js"]
-    }
-  ]
-
+	"icons": {
+		"48": "icons/nyt-48.png",
+		"96": "icons/nyt-96.png"
+	},
+	
+	"permissions": ["activeTab", "tabs"],
+	
+	"content_scripts": [
+		{
+		"matches": ["*://*.nytimes.com/*"],
+		"js": ["content_scripts/nyt_script.js"]
+		}
+	]
 }
