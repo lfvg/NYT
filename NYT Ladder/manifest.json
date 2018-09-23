@@ -4,6 +4,7 @@
 	"version": "0.1.4",
 
 	"description": "NYT Ladder beta",
+	"homepage_url": "https://github.com/lfvg/NYT",
   
 	"browser_action": {
 		"default_icon": "icons/nyt-32.png",	
