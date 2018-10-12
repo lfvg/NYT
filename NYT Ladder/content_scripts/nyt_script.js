@@ -11,7 +11,7 @@ browser.runtime.onMessage.addListener((message) => {
 	//PROCEDE PARA O SEGUINTE , CASO NAO IGNORA 
 	if (message.command === "getNYTArticle"){
 		//PROCURA AS TAGS PELO SUA CLASSNAME - LEMBRANDO QUE TITULO PODE SER VAZIO
-		var paragrafos = document.getElementsByClassName("css-1i0edl6 e2kc3sl0");
+		var paragrafos = document.getElementsByClassName("css-1xl4flh e2kc3sl0");
 		var tempTitle = document.getElementsByClassName("balancedHeadline");
 		var tempSubTitle = document.getElementsByClassName("css-p2vh5c ewc5vgb0");
 		var autores = document.getElementsByClassName("css-1cbhw1y e1x1pwtg1");
