@@ -29,6 +29,16 @@ browser.runtime.onMessage.addListener((message) => {
 				
 			
 		}
+		//TALVEZ USAR SELECT BY TAG PRA PEGAR O ARTICLEBODY E A PARTIR DELE USAR
+		//QUERYSELECTORALL PARA PEGAR OS P E FIGURE
+		//esse select funciona :)
+		var articleBody = document.querySelector("section[name=articleBody]");
+		var ps = articleBody.querySelectorAll("p");
+		var teste = "Teste\n";
+		for(var i = 0; i<ps.length; i++){
+			teste += ps[i].innerText + "\n";
+		}
+		alert(teste);
 		//RESPONDE AO POPUP COM O TITULO, SUBTITULO E CORPO DO ARTIGO
 		browser.runtime.sendMessage({command: "setNYTArticle", content: artigo, title: titulo, subtitle: subtitulo, autores: autoresTexto});
 	}
