@@ -34,9 +34,30 @@ browser.runtime.onMessage.addListener((message) => {
 		//esse select funciona :)
 		var articleBody = document.querySelector("section[name=articleBody]");
 		var ps = articleBody.querySelectorAll("p");
+		var articleContent = articleBody.querySelectorAll("p, figure")
 		var teste = "Teste\n";
-		for(var i = 0; i<ps.length; i++){
-			teste += ps[i].innerText + "\n";
+		//element.getAttribute
+		for(var i = 0; i<articleContent.length; i++){
+			if(articleContent[i].nodeName ==="P"){
+				teste += articleContent[i].innerText + "\n";
+			}else{
+				/*if(articleContent[i].querySelector("img").length > 0){
+					
+					teste += "\n";
+					teste += "---------IMAGEM---------\n";
+					var img = articleContent[i].querySelector("img");
+                    teste += img.getAttribute("src") + "\n";
+					teste += "\n";
+				}
+				else{
+					teste += "\n";
+					teste += "---------IMAGEM---------\n";
+					teste += articleContent[i].getAttribute("itemid") + "\n";
+					teste += "\n";
+					
+				}*/
+				
+			}
 		}
 		alert(teste);
 		//RESPONDE AO POPUP COM O TITULO, SUBTITULO E CORPO DO ARTIGO
