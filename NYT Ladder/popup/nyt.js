@@ -79,13 +79,26 @@ browser.runtime.onMessage.addListener((message) => {
 		var autoresTexto = document.createTextNode(message.autores);
 		autores.appendChild(autoresTexto);
 		content.appendChild(autores);
+		var isImage = false;
 	
 		for(var i = 0; i<(message.content.length); i++){
-			var paragrafo = document.createElement("P");
-			var paragrafoTexto = document.createTextNode(message.content[i]);
-			paragrafo.appendChild(paragrafoTexto);
-			paragrafo.style.width = "580px"
-			content.appendChild(paragrafo);
+			if(isImage){
+				//var imagem = document.createElement("IMG");
+				//imagem.setAttribute("src", message.content[i]);
+				//content.appendChild(imagem);
+				isImage = !isImage;
+			}
+			else{
+				if(message.content[i] === "nextIsImage"){
+					isImage = !isImage;
+				}else{
+					var paragrafo = document.createElement("P");
+					var paragrafoTexto = document.createTextNode(message.content[i]);
+					paragrafo.appendChild(paragrafoTexto);
+					paragrafo.style.width = "580px"
+					content.appendChild(paragrafo);
+				}
+			}
 		}
 		
 	}

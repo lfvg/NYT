@@ -18,11 +18,12 @@ browser.runtime.onMessage.addListener((message) => {
 		//DE MODO A EVITAR UM NULL POINT VERIFICASSE PRIMEIRO SE OS ELEMENTOS NAO SAO VAZIOS
 		if (tempTitle.length!=0) titulo = tempTitle[0].innerText;
 		if(tempSubTitle.length != 0) subtitulo = tempSubTitle[0].innerText;
-		if(paragrafos.length!=0){
+		//MUDANDO A FORMA DE PEGAR O ARTIGO
+		/*if(paragrafos.length!=0){
 			for (var i = 0; i < paragrafos.length; i++) {
 				artigo.push(paragrafos[i].innerText);
 			}
-		}
+		}*/
 		if(autores.length!=0){
 			
 				autoresTexto += autores[0].innerText;
@@ -37,26 +38,26 @@ browser.runtime.onMessage.addListener((message) => {
 		var articleContent = articleBody.querySelectorAll("p, figure")
 		var teste = "Teste\n";
 		//element.getAttribute
+		alert(articleContent.length);
 		for(var i = 0; i<articleContent.length; i++){
 			if(articleContent[i].nodeName ==="P"){
+				artigo.push(articleContent[i].innerText);
 				teste += articleContent[i].innerText + "\n";
-			}else{
-				/*if(articleContent[i].querySelector("img").length > 0){
+			}else if(articleContent[i].nodeName ==="FIGURE"){
+				teste += "---------IMAGEM---------\n";
+				teste += "---------IMAGEM---------\n";
+				artigo.push("nextIsImage");
+				var im = articleContent[i].querySelector("img");
+				//length nao funciona com querySelector
+				if(im != null){
 					
-					teste += "\n";
-					teste += "---------IMAGEM---------\n";
-					var img = articleContent[i].querySelector("img");
-                    teste += img.getAttribute("src") + "\n";
-					teste += "\n";
+					artigo.push(im.getAttribute("src");
+					teste += "---------POSSUI IMG----------\n";
+					teste += im.getAttribute("src") + "\n";
 				}
 				else{
-					teste += "\n";
-					teste += "---------IMAGEM---------\n";
-					teste += articleContent[i].getAttribute("itemid") + "\n";
-					teste += "\n";
-					
-				}*/
-				
+					artigo.push(articleContent[i].getAttribute("itemid"));
+				}
 			}
 		}
 		alert(teste);
