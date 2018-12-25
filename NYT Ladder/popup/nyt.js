@@ -83,13 +83,13 @@ browser.runtime.onMessage.addListener((message) => {
 	
 		for(var i = 0; i<(message.content.length); i++){
 			if(isImage){
-				//var imagem = document.createElement("IMG");
-				//imagem.setAttribute("src", message.content[i]);
-				//content.appendChild(imagem);
+				var imagem = document.createElement("IMG");
+				imagem.setAttribute("src", message.content[i]);
+				content.appendChild(imagem);
 				isImage = !isImage;
 			}
 			else{
-				if(message.content[i] === "nextIsImage"){
+				if(message.content[i] == "nextIsImage"){
 					isImage = !isImage;
 				}else{
 					var paragrafo = document.createElement("P");
