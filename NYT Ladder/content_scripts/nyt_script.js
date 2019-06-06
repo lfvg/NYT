@@ -35,7 +35,7 @@ browser.runtime.onMessage.addListener((message) => {
 	//PROCEDE PARA O SEGUINTE , CASO NAO IGNORA 
 	if (message.command === "getNYTArticle"){
 		//PROCURA AS TAGS PELO SUA CLASSNAME - LEMBRANDO QUE TITULO PODE SER VAZIO
-		var tempTitle = documentCopy.getElementsByClassName("balancedHeadline");
+		var tempTitle = document.getElementsByClassName("balancedHeadline");
 		var tempSubTitle = documentCopy.getElementsByClassName("css-p2vh5c ewc5vgb0");
 		var autores = documentCopy.getElementsByClassName("css-1cbhw1y e1x1pwtg1");
 		//DE MODO A EVITAR UM NULL POINT VERIFICASSE PRIMEIRO SE OS ELEMENTOS NAO SAO VAZIOS
